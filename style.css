@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:200');
+
+@font-face {
+	font-family: "Roboto-Thin";
+	src: url("https://cdn.rawgit.com/halimb/threejs-projects/1ba18e17/pomodoro/models/Roboto-Thin.ttf");
+}
+
+html {
+	font-family: 'Raleway', sans-serif;
+	background-color: #F9F9F9;
+}
+
+.container {
+	position: absolute;
+	left: 0; right: 0;
+	top: 0; bottom: 0;
+	margin: -5vw auto auto 10vw;
+	height: 50vw; 
+	width: 75vw;
+}
+
+canvas {
+	background-color: #F9F9F9;
+	height: 50vw; 
+	width: 75vw;
+	margin-bottom: -10vw;
+}
+
+.ctrl-panel {
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	cursor: default;
+	font-size: 270%;
+	position: relative;
+}
+
+.rest-ctrl {
+	left: 25%;
+}
+
+.work-ctrl {
+	left: 75%;
+}
+
+.center-pos{
+	text-align: center;
+	position: absolute;
+	-webkit-transform: translate(-50%, 0);
+}
+
+.clickable {
+	cursor: pointer;
+	font-size: 130%;
+}
+
+.num {
+	font-family: "Roboto-Thin";
+	font-size: 90%
+}
+
+.btn {
+    background-color: #F9F9F9;
+    border: .3ex solid #000000;
+    color: #000000;
+    padding: 2ex 3ex;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    max-width: 10.5ex;
+    font-size: 1.5ex;
+    margin: 1ex 2ex;
+    cursor: pointer;
+    transition: .4s;
+    outline: none;
+}
+
+.btn:hover {
+	background-color: #000000;
+	color: #F9F9F9;
+}
