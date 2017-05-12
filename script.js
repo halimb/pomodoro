@@ -104,6 +104,10 @@ function init() {
 	timer = new Clock();
 	refreshText();
 	anim();
+	
+	// force download the ding sound by playing it muted
+	ding.volume = 0;
+	ding.play();
 }
 
 window.onresize = function() {
@@ -411,7 +415,7 @@ function anim() {
 			}
 
 			else {
-				ding = new Audio(dingUrl);
+				ding.volume = 1;	
 				ding.play();
 				firstIter = true;
 				fillPie(work, circleColor, 1);
@@ -422,5 +426,7 @@ function anim() {
 			}
 		}
 	}
-	requestAnimationFrame(anim);
+	//requestAnimationFrame(anim);
 }
+
+window.setInterval(anim, 10);
