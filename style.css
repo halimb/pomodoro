@@ -8,13 +8,14 @@
 html {
 	font-family: 'Raleway', sans-serif;
 	background-color: #F9F9F9;
+  white-space: nowrap;
 }
 
 .container {
 	position: absolute;
 	left: 0; right: 0;
 	top: 0; bottom: 0;
-	margin: -5vw auto auto 10vw;
+  margin: auto;
 	height: 50vw; 
 	width: 75vw;
 }
@@ -24,6 +25,8 @@ canvas {
 	height: 50vw; 
 	width: 75vw;
 	margin-bottom: -10vw;
+  margin-top: -10vh;
+  z-index: -1;
 }
 
 .ctrl-panel {
@@ -32,7 +35,7 @@ canvas {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	cursor: default;
-	font-size: 270%;
+	font-size: 220%;
 	position: relative;
 }
 
@@ -51,6 +54,8 @@ canvas {
 }
 
 .clickable {
+  min-height: 48px;
+  min-width: 48px;
 	cursor: pointer;
 	font-size: 130%;
 }
@@ -61,16 +66,17 @@ canvas {
 }
 
 .btn {
+    position: relative;
+    z-index: 2;
     background-color: #F9F9F9;
-    border: .3ex solid #000000;
+    border: .2ex solid #000000;
     color: #000000;
-    padding: 2ex 3ex;
+    padding: 1ex 1.5ex;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    max-width: 10.5ex;
-    font-size: 1.5ex;
-    margin: 1ex 2ex;
+    font-size: 2;
+    margin: 1ex;
     cursor: pointer;
     transition: .4s;
     outline: none;
@@ -79,4 +85,9 @@ canvas {
 .btn:hover {
 	background-color: #000000;
 	color: #F9F9F9;
+}
+
+#start:hover {
+  background-color: #bada55;
+  color: black;
 }

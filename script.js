@@ -233,7 +233,7 @@ function resetRadius() {
 	rstExp /= totExp;
 	wRadius = correctRadius(wrkExp * totRadius);
 	rRadius = correctRadius(rstExp * totRadius);
-	ringWidth = wRadius < rRadius ? wRadius / 9 : rRadius / 9;
+	ringWidth = wRadius < rRadius ? wRadius / 20 : rRadius / 20;
 	fRingWidth = ringWidth / 2;
 	totWidth = ringWidth + fRingWidth;
 	drawSide(1);
