@@ -10,7 +10,7 @@ html {
     white-space: nowrap;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-tap-highlight-color: transparent;
-  overflow: hidden;
+    overflow: hidden;
 }
 
 .container {
@@ -25,11 +25,11 @@ html {
 }
 
 .center {
-	position: absolute;
-	right: 0;
+    position: absolute;
+    right: 0;
     bottom: 1vw;
-	width: 27vw;
-	margin: auto;
+    width: 27vw;
+    margin: auto;
 }
 
 canvas {
@@ -112,9 +112,9 @@ canvas {
 }
 
 @media screen and (max-width: 500px) {
-	.clickable {
-		font-size: 15vw;
-	}
+    .clickable {
+        font-size: 15vw;
+    }
     .btn {
         font-size: 5vw;
         padding: 1.5vw 3vw;
@@ -134,9 +134,9 @@ canvas {
         width: 100vw;
     }
     .center {
-    	width: 60vw;
-    	left: 0;
-      bottom: 5vw;
+        width: 60vw;
+        left: 0;
+        bottom: 5vw;
     }
 }
 
@@ -152,7 +152,7 @@ canvas {
         font-size: 3vw;
     }
     .center {
-    	width: 22vw;
-      bottom: 1vw;
+        width: 22vw;
+        bottom: 1vw;
     }
 }
