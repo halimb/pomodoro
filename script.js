@@ -116,6 +116,7 @@ start.onclick = function() {
 
 pause.onclick = function() {
 	timer.pause();
+	clear = true;
 }
 
 reset.onclick = function() {
@@ -164,7 +165,6 @@ document.onmousedown = function(e) {
 			restDown();
 			break;
 		default:
-			console.log("null click");
 			break;
 	}
 }
@@ -186,6 +186,7 @@ function workUp() {
 	}
 	else {
 		window.clearTimeout(timeout);
+		delay = 300;
 	}
 }
 
@@ -200,6 +201,7 @@ function workDown() {
 	}
 	else {
 		window.clearTimeout(timeout);
+		delay = 300;
 	}
 }
 
@@ -214,6 +216,7 @@ function restUp() {
 	}
 	else {
 		window.clearTimeout(timeout);
+		delay = 300;
 	}
 }
 
@@ -222,12 +225,13 @@ function restDown() {
 		restTime--;
 		restDisplay.innerHTML = restTime;
 		resetRadius();
-		delay *= (delay > 50) ? .75 : 1;
+		delay *= (delay > 50) ? .85 : 1;
 		timeout = window.setTimeout(restDown, delay);
 		modified = true;
 	}
 	else {
 		window.clearTimeout(timeout);
+		delay = 300;
 	}	
 }
 
@@ -428,13 +432,14 @@ function anim() {
 			}
 		}
 	}
-	else if(modified) {
-		console.log("MODIFIED: resetting sides")
-		displayRem(1, workTime);
-		resetSide(0, restTime);
-		modified = false;
-	}
-	//requestAnimationFrame(anim);
+	// else if(modified) {
+	// 	clearSide(1);
+	// 	clearSide(2);
+	// 	displayRem(1, workTime);
+	// 	displayRem(0, restTime);
+	// 	modified = false;
+	// }
+	// //requestAnimationFrame(anim);
 }
 
 window.setInterval(anim, 10);
