@@ -1,37 +1,36 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<link rel="stylesheet" type="text/css" href="style.css">
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, maximum-scale=1">
 
-	</head>
-	<body oncontextmenu="return false" class="unselectable">
-		<button class="btn" id="start">Start</button>
-		<button class="btn" id="pause">Pause</button>
-		<button class="btn" id="reset">Reset</button>
-		<div class="container">
-		  <canvas id="cnv"></canvas>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, maximum-scale=1">
+</head>
 
-		  <div class="ctrl-panel">
-		    <div class="rest-ctrl center-pos">
-		      rest
-		      <br>
-		      <span class="clickable" id="rest-down"> - </span>
-		      <span id="rest-mn" class="num">5</span> 
-		      <span class="clickable" id="rest-up"> + </span>
-		    </div>
-		    <div class="work-ctrl center-pos">
-		      work
-		      <br>
-		      <span class="clickable" id="work-down" > - </span>
-		      <span id="work-mn" class="num">25</span> 
-		      <span class="clickable" id="work-up"> + </span>				
-		    </div>
-		  </div>
+<body oncontextmenu="return false" class="unselectable">
+    <button class="btn" id="start">Start</button>
+    <button class="btn" id="pause">Pause</button>
+    <button class="btn" id="reset">Reset</button>
+    <div class="container">
+        <canvas id="cnv"></canvas>
+        <div class="ctrl-panel">
+            <div class="rest-ctrl center-pos">
+                rest
+                <br>
+                <span class="clickable" id="rest-down"> - </span>
+                <span id="rest-mn" class="num">5</span>
+                <span class="clickable" id="rest-up"> + </span>
+            </div>
+            <div class="work-ctrl center-pos">
+                work
+                <br>
+                <span class="clickable" id="work-down"> - </span>
+                <span id="work-mn" class="num">25</span>
+                <span class="clickable" id="work-up"> + </span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="script.js"></script>
+</body>
 
-		</div>
-	
-	<script type="text/javascript" src="script.js"></script>
-	</body>
 </html>
