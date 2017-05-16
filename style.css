@@ -10,6 +10,7 @@ html {
     white-space: nowrap;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
 }
 
 .container {
@@ -21,6 +22,14 @@ html {
     margin: auto;
     height: 50vw;
     width: 75vw;
+}
+
+.center {
+	position: absolute;
+	right: 0;
+    bottom: 1vw;
+	width: 27vw;
+	margin: auto;
 }
 
 canvas {
@@ -38,7 +47,7 @@ canvas {
     -moz-user-select: none;
     -ms-user-select: none;
     cursor: default;
-    font-size: 220%;
+    font-size: 3.5vw;
     position: relative;
 }
 
@@ -60,26 +69,26 @@ canvas {
     min-height: 48px;
     min-width: 48px;
     cursor: pointer;
-    font-size: 130%;
+    font-size: 5vw;
 }
 
 .num {
     font-family: "Roboto-Thin";
-    font-size: 90%
+    font-size: 3.5vw;
 }
 
 .btn {
     position: relative;
     z-index: 2;
     background-color: #F9F9F9;
-    border: .2ex solid #000000;
+    border: .2vw solid #000000;
     color: #000000;
-    padding: 1ex 1.5ex;
+    padding: .8vw 1vw;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 1.5vw;
-    margin: 1ex;
+    font-size: 2vw;
+    margin: .5vw;
     cursor: pointer;
     transition: .4s;
     outline: none;
@@ -103,14 +112,18 @@ canvas {
 }
 
 @media screen and (max-width: 500px) {
+	.clickable {
+		font-size: 15vw;
+	}
     .btn {
-        font-size: 3vw;
+        font-size: 5vw;
+        padding: 1.5vw 3vw;
     }
     .num {
-        font-size: 100%;
+        font-size: 10vw;
     }
     .ctrl-panel {
-        font-size: 150%;
+        font-size: 9vw;
     }
     canvas {
         height: 67vw;
@@ -119,5 +132,27 @@ canvas {
     .container {
         height: 67vw;
         width: 100vw;
+    }
+    .center {
+    	width: 60vw;
+    	left: 0;
+      bottom: 5vw;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .btn {
+        font-size: 1.5vw;
+        padding: .5vw .7vw;
+    }
+    .num {
+        font-size: 3.5vw;
+    }
+    .ctrl-panel {
+        font-size: 3vw;
+    }
+    .center {
+    	width: 22vw;
+      bottom: 1vw;
     }
 }
