@@ -3,8 +3,9 @@ var ding = new Audio(dingUrl);
 var canvas = document.getElementById("cnv");
 var ctx = canvas.getContext("2d");
 var outerWidth = window.outerWidth;
-var h = window.innerWidth * .5;
-var w = window.innerWidth * .75;
+var iw = window.innerWidth;
+var h = iw > 500 ? iw * .5 : iw * .67;
+var w = iw > 500 ? iw * .75 : iw;
 canvas.height = h;
 canvas.width = w;
 ctx.lineWidth = 2;
@@ -42,6 +43,7 @@ function Clock() {
 	}
 }
 
+var modified = false;
 var clear = true;
 var work = true;
 var workTime = document.getElementById("work-mn").innerHTML;
@@ -59,27 +61,53 @@ var minRadius = w / 9;
 var maxRadius = w / 5;
 var wRadius, rRadius, ringWidth, fRingWidth, totWidth;
 
-var circleColor = "#000000";
-var ringColor = "#000000";
+//Style constants
+const circleColor = "#000000";
+const ringColor = "#000000";
+const bgColor = "#F9F9F9";
 var focusColor = "#BADA55";
-var bgColor = "#F9F9F9";
 
-
+//Timer and timer controls
 var timer, previous, firstIter;
 var start = document.getElementById('start');
 var pause = document.getElementById('pause');
 var reset = document.getElementById('reset');
 
+//Timer text display
+var workDisplay = document.getElementById("work-mn");
+var restDisplay = document.getElementById("rest-mn");
+
 var fontLoaded = false;
-var robotoFont = new FontFace("Roboto-Thin", "url('https://cdn.rawgit.com/halimb/threejs-projects/1ba18e17/pomodoro/models/Roboto-Thin.ttf')");
+var robotoFont = new FontFace("Roboto-Thin",
+ "url('https://cdn.rawgit.com/halimb/threejs"+
+ "-projects/1ba18e17/pomodoro/models/Roboto-Thin.ttf')");
+
+
+init();
+
+
+function init() {
+	resetCanvas();
+	timer = new Clock();
+	anim();
+	
+	// force download the ding sound by playing it muted
+	ding.volume = 0;
+	ding.play();
+}
+
 robotoFont.load().then(
   function(){
     document.fonts.add(robotoFont);
     fontLoaded = true;
+    resetSide(1);
+	resetSide(0); 
   }, 
+
   function(message) {
     console.log(message);
-  });
+  }
+);
 
 start.onclick = function() {
 	clear = false;
@@ -95,25 +123,15 @@ reset.onclick = function() {
 	work = true;
 	timer.reset();
 	resetCanvas();
-}
-
-init();
-
-function init() {
-	resetCanvas();
-	timer = new Clock();
-	refreshText();
-	anim();
-	
-	// force download the ding sound by playing it muted
-	ding.volume = 0;
-	ding.play();
+	reset.style.backgroundColor = bgColor;
+	reset.style.color = circleColor;
 }
 
 window.onresize = function() {
 		outerWidth = window.outerWidth;
-		h = window.innerWidth * .5;
-		w = window.innerWidth * .75;
+	 	iw = window.innerWidth;
+		h = iw > 500 ? iw * .5 : iw * .67;
+		w = iw > 500 ? iw * .75 : iw;
 		canvas.height = h; 
 		canvas.width = w;
 		xr = w * 3 / 4;
@@ -130,37 +148,32 @@ document.onmouseup = function() {
 	delay = 300;
 }
 
-var workDisplay = document.getElementById("work-mn");
-var restDisplay = document.getElementById("rest-mn");
-var btnWorkUp =  document.getElementById("work-up");
-var btnRestUp = document.getElementById("rest-up");
-var btnWorkDown = document.getElementById("work-down");
-var btnRestDown = document.getElementById("rest-down");
+document.onmousedown = function(e) {
+	clicked = true;
+	switch(e.target.id) {
+		case "work-up":
+			workUp();
+			break;
+		case "work-down":
+			workDown();
+			break;
+		case "rest-up":
+			restUp()
+			break;
+		case "rest-down":
+			restDown();
+			break;
+		default:
+			console.log("null click");
+			break;
+	}
+}
 
-btnWorkUp.addEventListener("mouseenter", 
-		function() { clicked = true; }); 
-btnWorkUp.addEventListener("mouseleave", 
-		function() { clicked = false;});
+document.addEventListener('touchend', function(){
+	clicked = false;
+	delay = 300;
+});
 
-btnWorkDown.addEventListener("mouseenter", 
-		function() { clicked = true; }); 
-btnWorkDown.addEventListener("mouseleave", 
-		function() { clicked = false;});
-
-btnRestUp.addEventListener("mouseenter", 
-		function() { clicked = true; }); 
-btnRestUp.addEventListener("mouseleave", 
-		function() { clicked = false;});
-
-btnRestDown.addEventListener("mouseenter", 
-		function() { clicked = true; }); 
-btnRestDown.addEventListener("mouseleave", 
-		function() { clicked = false;});
-
-btnWorkUp.onmousedown = function(){clicked = true; workUp()};
-btnWorkDown.onmousedown = function(){clicked = true; workDown();}
-btnRestUp.onmousedown = function(){clicked = true; restUp();}
-btnRestDown.onmousedown = function(){clicked = true; restDown();}
 
 function workUp() {
 	if(workTime < 100 && clicked) {
@@ -169,6 +182,7 @@ function workUp() {
 		resetRadius();
 		delay *= (delay > 50) ? .85 : 1;
 		timeout = window.setTimeout(workUp, delay);
+		modified = true;
 	}
 	else {
 		window.clearTimeout(timeout);
@@ -180,13 +194,12 @@ function workDown() {
 		workTime--;
 		workDisplay.innerHTML = workTime;
 		resetRadius();
-		if(clicked) {
-			delay *= (delay > 50) ? .85 : 1;
-			timeout = window.setTimeout(workDown, delay);
-		}
-		else {
-			window.clearTimeout(timeout);
-		}
+		delay *= (delay > 50) ? .85 : 1;
+		timeout = window.setTimeout(workDown, delay);
+		modified = true;
+	}
+	else {
+		window.clearTimeout(timeout);
 	}
 }
 
@@ -197,6 +210,7 @@ function restUp() {
 		resetRadius();
 		delay *= (delay > 50) ? .85 : 1;
 		timeout = window.setTimeout(restUp, delay);
+		modified = true;
 	}
 	else {
 		window.clearTimeout(timeout);
@@ -210,6 +224,7 @@ function restDown() {
 		resetRadius();
 		delay *= (delay > 50) ? .75 : 1;
 		timeout = window.setTimeout(restDown, delay);
+		modified = true;
 	}
 	else {
 		window.clearTimeout(timeout);
@@ -332,27 +347,23 @@ function resetCanvas() {
 }
 
 function displayRem(wrk, value) {
-  var font = fontLoaded ? "Roboto-Thin" : "Arial";
-  if (font == "Roboto-Thin") {console.log("loaded ! !  !")}
-  else {console.log("not loaded...")}
-	var formatted = formatTime(value);
-	var fontSize = wrk ? 2 * wRadius / 3 : 2 * rRadius / 3;
-	if(formatted.length > 9) {
-		fontSize /= 2.5;
-	}
-	else if(formatted.length >= 6) {
-		fontSize /= 2;
-	}
-  if(font == "Arial") {
-    fontSize *= .85;
-  }
-	var xpos = wrk ? xr : xl;
-	ctx.globalCompositeOperation = "difference";
-	ctx.fillStyle = "#ffffff";
-	ctx.font = fontSize + "px " + font;
-	ctx.textAlign = "center";
-	ctx.fillText(formatted, xpos, y + fontSize / 4);
-	ctx.globalCompositeOperation = "source-over";
+  	if(fontLoaded) {
+		var formatted = formatTime(value);
+		var fontSize = wrk ? 2 * wRadius / 3 : 2 * rRadius / 3;
+		if(formatted.length > 9) {
+			fontSize /= 2.5;
+		}
+		else if(formatted.length >= 6) {
+			fontSize /= 2;
+		}
+		var xpos = wrk ? xr : xl;
+		ctx.globalCompositeOperation = "difference";
+		ctx.fillStyle = "#ffffff";
+		ctx.font = fontSize + "px " + "Roboto-Thin";
+		ctx.textAlign = "center";
+		ctx.fillText(formatted, xpos, y + fontSize / 4);
+		ctx.globalCompositeOperation = "source-over";
+  	}
 }
 
 function formatTime(mins) {
@@ -366,15 +377,6 @@ function formatTime(mins) {
 	return (hours + minutes + secs);
 }
 
-function refreshText() {
-	if(fontLoaded) {
-		resetSide(1);
-		resetSide(0); 
-	}
-  else {
-		timeout = window.setTimeout(refreshText, 1500);
-  }
-}
 
 function anim() {
 	if(timer.running) {
@@ -425,6 +427,12 @@ function anim() {
 				timer.start();
 			}
 		}
+	}
+	else if(modified) {
+		console.log("MODIFIED: resetting sides")
+		displayRem(1, workTime);
+		resetSide(0, restTime);
+		modified = false;
 	}
 	//requestAnimationFrame(anim);
 }
