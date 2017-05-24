@@ -1,7 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway:200');
+@font-face {
+    font-family: "Raleway";
+     src: url("fonts/Raleway-ExtraLight.ttf");
+    }
+
 @font-face {
     font-family: "Roboto-Thin";
-    src: url("https://cdn.rawgit.com/halimb/threejs-projects/1ba18e17/pomodoro/models/Roboto-Thin.ttf");
+    src: url("fonts/Roboto-Thin.ttf");
 }
 
 html {

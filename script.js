@@ -79,8 +79,7 @@ var restDisplay = document.getElementById("rest-mn");
 
 var fontLoaded = false;
 var robotoFont = new FontFace("Roboto-Thin",
-    "url('https://cdn.rawgit.com/halimb/threejs" +
-    "-projects/1ba18e17/pomodoro/models/Roboto-Thin.ttf')");
+    "url('fonts/Roboto-Thin.ttf')");
 
 
 init();
