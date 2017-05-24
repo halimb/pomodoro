@@ -10,7 +10,7 @@
 
 html {
     font-family: 'Raleway', sans-serif;
-    background-color: #F9F9F9;
+    background-color: #ffffff;
     white-space: nowrap;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-tap-highlight-color: transparent;
@@ -37,7 +37,7 @@ html {
 }
 
 canvas {
-    background-color: #F9F9F9;
+    background-color: #ffffff;
     height: 50vw;
     width: 75vw;
     margin-bottom: -10vw;
@@ -84,7 +84,7 @@ canvas {
 .btn {
     position: relative;
     z-index: 2;
-    background-color: #F9F9F9;
+    background-color: #ffffff;
     border: .2vw solid #000000;
     color: #000000;
     padding: .8vw 1vw;
@@ -100,7 +100,7 @@ canvas {
 
 .btn:hover {
     background-color: #000000;
-    color: #F9F9F9;
+    color: #ffffff;
 }
 
 #start:hover {

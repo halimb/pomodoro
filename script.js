@@ -64,7 +64,7 @@ var wRadius, rRadius, ringWidth, fRingWidth, totWidth;
 //Style constants
 const circleColor = "#000000";
 const ringColor = "#000000";
-const bgColor = "#F9F9F9";
+const bgColor = "#FFFFFF";
 var focusColor = "#BADA55";
 
 //Timer and timer controls
