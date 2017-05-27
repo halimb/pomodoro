@@ -43,11 +43,11 @@ function Clock() {
     }
 }
 
+var workTime = document.getElementById("work-mn").innerHTML;
+var restTime = document.getElementById("rest-mn").innerHTML;
 var modified = false;
 var clear = true;
 var work = true;
-var workTime = document.getElementById("work-mn").innerHTML;
-var restTime = document.getElementById("rest-mn").innerHTML;
 var clicked = false;
 var timeout = 0;
 var delay = 300;
@@ -251,8 +251,8 @@ function resetRadius() {
     rstExp /= totExp;
     wRadius = correctRadius(wrkExp * totRadius);
     rRadius = correctRadius(rstExp * totRadius);
-    ringWidth = wRadius < rRadius ? wRadius / 20 : rRadius / 20;
-    fRingWidth = ringWidth / 2;
+    ringWidth = wRadius < rRadius ? wRadius / 100 : rRadius / 100;
+    fRingWidth = ringWidth * 2;
     totWidth = ringWidth + fRingWidth;
     drawSide(1);
     drawSide(0);
