@@ -1,10 +1,20 @@
 @font-face {
     font-family: "Raleway";
-     src: url("fonts/Raleway-ExtraLight.ttf");
-    }
+    src: url("fonts/Raleway-ExtraLight.ttf");
+}
 
 @font-face {
-    font-family: "Roboto-Thin";
+    font-family: "Raleway-m";
+    src: url("fonts/Raleway-Medium.ttf");
+}
+
+@font-face {
+    font-family: "Roboto-l";
+    src: url("fonts/Roboto-Light.ttf");
+}
+
+@font-face {
+    font-family: "Roboto";
     src: url("fonts/Roboto-Thin.ttf");
 }
 
@@ -29,12 +39,35 @@ html {
 }
 
 .center {
-    position: absolute;
     right: 0;
     bottom: 1vw;
-    width: 27vw;
+    width: 20vw;
     margin: auto;
+    position: absolute;
 }
+
+.btn {
+    width: 5vw;
+    color: #000;
+    height: 5vw;
+    float: left;
+    margin: .5vw;
+    cursor: pointer;
+    transition: .4s;
+    line-height: 5vw;
+    font-size: 1.2vw;
+    border-radius: 50%;
+    text-align: center;
+    text-decoration: none;
+    border: .1vw solid #000;
+    font-family: "Raleway-m";
+}
+
+.btn:hover {
+    color: white;
+    background-color: #000;
+}
+
 
 canvas {
     background-color: #ffffff;
@@ -42,7 +75,6 @@ canvas {
     width: 75vw;
     margin-bottom: -10vw;
     margin-top: -10vh;
-    z-index: -1;
 }
 
 .ctrl-panel {
@@ -74,39 +106,14 @@ canvas {
     min-width: 48px;
     cursor: pointer;
     font-size: 5vw;
+    font-family: "Raleway";
 }
 
 .num {
-    font-family: "Roboto-Thin";
+    font-family: "Roboto";
     font-size: 3.5vw;
 }
 
-.btn {
-    position: relative;
-    z-index: 2;
-    background-color: #ffffff;
-    border: .2vw solid #000000;
-    color: #000000;
-    padding: .8vw 1vw;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 2vw;
-    margin: .5vw;
-    cursor: pointer;
-    transition: .4s;
-    outline: none;
-}
-
-.btn:hover {
-    background-color: #000000;
-    color: #ffffff;
-}
-
-#start:hover {
-    background-color: #bada55;
-    color: black;
-}
 
 .unselectable {
     -moz-user-select: none;
@@ -115,48 +122,66 @@ canvas {
     user-select: none;
 }
 
+
+@media screen and (max-width: 800px) {
+    .btn {
+        height: 8vw;
+        width: 8vw;
+        margin: .5vw;
+        font-size: 2vw !important;
+        line-height: 8vw;
+    }
+    .num {
+        font-size: 5vw;
+    }
+    .ctrl-panel {
+        font-size: 5vw;
+    }
+    .clickable {
+        font-size: 8vw;
+    }
+    .center {
+        width: 29vw !important;
+        bottom: 1vw;
+    }
+}
+
 @media screen and (max-width: 500px) {
     .clickable {
         font-size: 15vw;
     }
+
     .btn {
-        font-size: 5vw;
-        padding: 1.5vw 3vw;
+        height: 15vw;
+        width: 15vw;
+        margin: 2vw;
+        font-size: 4.5vw !important;
+        line-height: 15vw;
     }
+
     .num {
         font-size: 10vw;
+        font-family: "Roboto-Thin";
     }
+
     .ctrl-panel {
         font-size: 9vw;
     }
+
     canvas {
         height: 67vw;
         width: 100vw;
     }
+
     .container {
         height: 67vw;
         width: 100vw;
+        font-family: "Raleway";
     }
+
     .center {
-        width: 60vw;
+        width: 59vw !important;
         left: 0;
         bottom: 5vw;
-    }
-}
-
-@media screen and (min-width: 800px) {
-    .btn {
-        font-size: 1.5vw;
-        padding: .5vw .7vw;
-    }
-    .num {
-        font-size: 3.5vw;
-    }
-    .ctrl-panel {
-        font-size: 3vw;
-    }
-    .center {
-        width: 22vw;
-        bottom: 1vw;
     }
 }
