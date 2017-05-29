@@ -9,11 +9,6 @@
 }
 
 @font-face {
-    font-family: "Roboto-l";
-    src: url("fonts/Roboto-Light.ttf");
-}
-
-@font-face {
     font-family: "Roboto";
     src: url("fonts/Roboto-Thin.ttf");
 }
