@@ -2,40 +2,47 @@
 
 <html>
 
-<head>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <meta charset="UTF-8">
-    <meta name="author" contant="Abdel Halim Bouguedra">
-    <meta name="viewport" content="width=device-width maximum-scale='1'">
-</head>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <meta charset="UTF-8">
+        <meta name="author" contant="Abdel Halim Bouguedra">
+        <meta name="viewport" content="width=device-width maximum-scale='1'">
+    </head>
 
-<body oncontextmenu="return false" class="unselectable">
-    <div class="container">
-        <canvas id="cnv"></canvas>
-        <div class="ctrl-panel">
-            <div class="rest-ctrl center-pos">
-                rest
-                <br>
-                <span class="clickable" id="rest-down"> - </span>
-                <span id="rest-mn" class="num">5</span>
-                <span class="clickable" id="rest-up"> + </span>
-            </div>
-            <div class="work-ctrl center-pos">
-                work
-                <br>
-                <span class="clickable" id="work-down"> - </span>
-                <span id="work-mn" class="num">25</span>
-                <span class="clickable" id="work-up"> + </span>
+    <body oncontextmenu="return false" class="unselectable">
+        <div class="container">
+            <canvas id="cnv"></canvas>
+            <div class="ctrl-panel">
+                <div class="rest-ctrl center-pos">
+                    rest
+                    <br>
+                    <span class="clickable" id="rest-down"> - </span>
+                    <span id="rest-mn" class="num">5</span>
+                    <span class="clickable" id="rest-up"> + </span>
+                </div>
+                <div class="work-ctrl center-pos">
+                    work
+                    <br>
+                    <span class="clickable" id="work-down"> - </span>
+                    <span id="work-mn" class="num">25</span>
+                    <span class="clickable" id="work-up"> + </span>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <div class="center">
-        <div class="btn" id="start">Start</div>
-        <div class="btn" id="pause">Pause</div>
-        <div class="btn" id="reset">Reset</div>
-    </div>
-    <script type="text/javascript" src="script.js"></script>
-</body>
+        
+        <div class="center">
+            <div class="btn" id="start">Start</div>
+            <div class="btn" id="pause">Pause</div>
+            <div class="btn" id="reset">Reset</div>
+        </div>
+            <!-- link to the source code repo -->
+        <a href="https://github.com/halimb/pomodoro" target="_blank">
+            <div title="Source code" style="position: absolute; right: 20px; top: 20px; height: 50px; width: 50px; padding: 10px; border-radius: 50%; background: #ad5; cursor: pointer; font-size: 40px; text-align: center; vertical-align: middle; color: black; font-family: Arial; line-height: 40px;">
+                 {&nbsp;}
+            </div>
+        </a>
+        <!--  -->
+        <script type="text/javascript" src="script.js"></script>
+    </body>
 
 </html>
